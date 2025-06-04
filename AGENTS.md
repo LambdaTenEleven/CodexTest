@@ -49,7 +49,6 @@ This project is a test project for handling tasks for employees, including task 
 ### General Implementation Guidelines
 - Prefer using Mediator pattern for handling commands and queries. You can use the `MediatR` library for this purpose.
 - Use CQRS (Command Query Responsibility Segregation) pattern to separate read and write operations.
-- Use Entity Framework Core for data access. Do not use repository pattern because EF Core already provides a good abstraction for data access. But abstract your DbContext to a separate class/interface to keep your code clean and maintainable.
 - Use AutoMapper for mapping between entities and DTOs (Data Transfer Objects).
 - Use FluentValidation for validating input models.
 - Use Result pattern for returning results from methods/commands/queries. This helps in handling errors and success cases uniformly.
@@ -59,10 +58,12 @@ This project is a test project for handling tasks for employees, including task 
 
 ### DB implementation guidelines
 - Use PostgreSQL as the database.
+- Use Entity Framework Core for data access. Do not use repository pattern because EF Core already provides a good abstraction for data access. But abstract your DbContext to a separate class/interface to keep your code clean and maintainable.
 - Use migrations for managing database schema changes. Use the `dotnet ef` CLI commands to create and apply migrations.
+- Use data seeding for populating initial data in the database when app starts in development mode. Use HasData method in your DbContext to seed data.
 - Use `DbContext` for data access. Do not use raw SQL queries unless absolutely necessary.
 - Use Code First approach for defining your database schema. Define your entities and their relationships in the `DbContext` class.
 - Use Fluent API for configuring your entities and their relationships. Avoid using data annotations unless necessary.
 - Use Guid as the primary key for your entities.
 - When writing LINQ queries, use method syntax instead of query syntax for consistency with the rest of the codebase.
-- When writing LINQ queries, use `AsNoTracking()` for read-only queries to improve performance. Try to avoid using `Include()` unless absolutely necessary, as it can lead to performance issues. Try to optimize your queries to load only the necessary data.
+- When writing EF LINQ queries, use `AsNoTracking()` for read-only queries to improve performance. Try to avoid using `Include()` unless absolutely necessary, as it can lead to performance issues. Try to optimize your queries to load only the necessary data.
