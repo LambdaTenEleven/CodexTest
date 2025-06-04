@@ -13,6 +13,27 @@ This project is a test project for handling tasks for employees, including task 
 - /tests:
   - Application.UnitTests: Contains unit tests for the application layer.
 
+The project should be organized in a way that follows the Clean Architecture principles, separating concerns into different layers.
+Also, it should follow the Vertical Slice Architecture, where each feature is contained within its own folder, including the command, query, handler, and any related services or validators.
+Example structure for a feature:
+```
+src
+├── CodexTest.Application
+│   ├── Features
+│   │   ├── Task
+│   │   │   ├── Commands
+│   │   │   │   ├── CreateTaskCommand.cs
+```
+
+The namespace usually should follow the structure of the project, but for features, it should be more specific to the feature itself. For example:
+```csharp
+namespace CodexTest.Application.Commands;
+```
+instead of:
+```csharp
+namespace CodexTest.Application.Features.Task.Commands;
+```
+
 ## Code Style and Guidelines
 ### General Guidelines
 - Follow the [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions) for .NET 9 provided by Microsoft.
@@ -49,6 +70,7 @@ This project is a test project for handling tasks for employees, including task 
 ### General Implementation Guidelines
 - Prefer using Mediator pattern for handling commands and queries. You can use the `MediatR` library for this purpose.
 - Use CQRS (Command Query Responsibility Segregation) pattern to separate read and write operations.
+- Each command or query should have its own handler contained withing the same class as the command/query itself. Follow the request-response pattern for commands and queries.
 - Use AutoMapper for mapping between entities and DTOs (Data Transfer Objects).
 - Use FluentValidation for validating input models.
 - Use Result pattern for returning results from methods/commands/queries. This helps in handling errors and success cases uniformly.
