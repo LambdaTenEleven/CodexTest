@@ -105,6 +105,7 @@ public class CreateTaskCommand
 - Use Guid as the primary key for your entities.
 - When writing LINQ queries, use method syntax instead of query syntax for consistency with the rest of the codebase.
 - When writing EF LINQ queries, use `AsNoTracking()` for read-only queries to improve performance. Try to avoid using `Include()` unless absolutely necessary, as it can lead to performance issues. Try to optimize your queries to load only the necessary data.
+- Use Unit of Work pattern for managing transactions. Use `IUnitOfWork` interface to define your unit of work. Implement it in your DbContext class.
 
 ## PR Guidelines
 - Name your feature branches using the format `feature/{ticket-id}-description`, e.g., `feature/US001-create-task` or `codex/US001-create-task`.
