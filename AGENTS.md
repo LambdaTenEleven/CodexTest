@@ -71,6 +71,21 @@ namespace CodexTest.Application.Features.Task.Commands;
 - Prefer using Mediator pattern for handling commands and queries. You can use the `MediatR` library for this purpose.
 - Use CQRS (Command Query Responsibility Segregation) pattern to separate read and write operations.
 - Each command or query should have its own handler contained withing the same class as the command/query itself. Follow the request-response pattern for commands and queries.
+Example structure for a command:
+```csharp
+namespace CodexTest.Application.Commands;
+public class CreateTaskCommand
+{
+    public record Request(string Title, string Description) : IDomainCommand<Result<TaskDto>>; // or other appropriate type
+    public record Response(Result<TaskDto> Result);
+
+    public class Handler : IRequestHandler<Request, Result<TaskDto>>
+    {
+        ... // Implementation of the handler
+    }
+}
+```
+
 - Use AutoMapper for mapping between entities and DTOs (Data Transfer Objects).
 - Use FluentValidation for validating input models.
 - Use Result pattern for returning results from methods/commands/queries. This helps in handling errors and success cases uniformly.
