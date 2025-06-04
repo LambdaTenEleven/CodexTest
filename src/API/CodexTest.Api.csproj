@@ -9,5 +9,9 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1"/>
     </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodexTest.Application\CodexTest.Application.csproj" />
+    <ProjectReference Include="..\CodexTest.Infrastructure\CodexTest.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>
