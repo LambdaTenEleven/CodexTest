@@ -53,6 +53,7 @@ namespace CodexTest.Application.Features.Task.Commands;
 - Move constants to top level of the class/method or to a separate static class if they are used across multiple classes.
 - Follow the [SOLID principles](https://en.wikipedia.org/wiki/SOLID) for object-oriented design. Follow DRY, KISS, and YAGNI principles.
 - Use dependency injection for managing dependencies between classes.
+- When installing new NuGet packages, prefer using the latest stable version unless otherwise specified.
 
 ### Tests Writing Guidelines
 - Use NUnit for writing unit tests.
@@ -104,3 +105,6 @@ public class CreateTaskCommand
 - Use Guid as the primary key for your entities.
 - When writing LINQ queries, use method syntax instead of query syntax for consistency with the rest of the codebase.
 - When writing EF LINQ queries, use `AsNoTracking()` for read-only queries to improve performance. Try to avoid using `Include()` unless absolutely necessary, as it can lead to performance issues. Try to optimize your queries to load only the necessary data.
+
+## Codex Memo for Running the Project in Container
+- Postgess should be running on port 5432, user `postgres`, password `postgres`, database `codexdb`.
