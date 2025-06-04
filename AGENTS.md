@@ -106,5 +106,9 @@ public class CreateTaskCommand
 - When writing LINQ queries, use method syntax instead of query syntax for consistency with the rest of the codebase.
 - When writing EF LINQ queries, use `AsNoTracking()` for read-only queries to improve performance. Try to avoid using `Include()` unless absolutely necessary, as it can lead to performance issues. Try to optimize your queries to load only the necessary data.
 
+## PR Guidelines
+- Name your feature branches using the format `feature/{ticket-id}-description`, e.g., `feature/US001-create-task` or `codex/US001-create-task`.
+- Name your commit messages using the format `[US001] Description of the change`, e.g., `[US001] Create task command`.
+
 ## Codex Memo for Running the Project in Container
 - Postgess should be running on port 5432, user `postgres`, password `postgres`, database `codexdb`.
